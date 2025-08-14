@@ -4,8 +4,6 @@ Optimization Advisor for Student Room Analysis.
 This module provides database optimization recommendations.
 """
 
-from typing import List
-
 
 class OptimizationAdvisor:
     """Provides database optimization recommendations."""

@@ -52,23 +52,6 @@ class QueryType(Enum):
     DROP = 'DROP'
 
 
-class AnalysisType(Enum):
-    """Analysis type enumeration."""
-    ROOM_OCCUPANCY = 'room_occupancy'
-    AGE_STATISTICS = 'age_statistics'
-    GENDER_DISTRIBUTION = 'gender_distribution'
-    AGE_DIFFERENCES = 'age_differences'
-    BUILDING_STATISTICS = 'building_statistics'
-
-
-class DataSource(Enum):
-    """Data source enumeration."""
-    JSON = 'json'
-    CSV = 'csv'
-    DATABASE = 'database'
-    API = 'api'
-
-
 class SortOrder(Enum):
     """Sort order enumeration."""
     ASC = 'ASC'

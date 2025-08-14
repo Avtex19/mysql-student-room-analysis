@@ -8,7 +8,7 @@ import json
 from typing import List, Dict, Any, Protocol
 from abc import ABC, abstractmethod
 from ..models import Room, Student
-from ..enums import DataSource, Constants
+from ..enums import Constants
 
 
 class DataValidator(Protocol):
@@ -56,7 +56,6 @@ class JsonDataLoader(DataLoader):
     def __init__(self, file_path: str, validator: DataValidator):
         self.file_path = file_path
         self.validator = validator
-        self.source_type = DataSource.JSON
     
     def load(self) -> List[Dict[str, Any]]:
         """Load data from JSON file."""
