@@ -119,10 +119,9 @@ The application follows SOLID principles with a clean, modular structure:
 │   │   ├── optimization/   # Optimization utilities
 │   │   │   ├── __init__.py
 │   │   │   └── optimization_advisor.py
-│   │   ├── preview/        # Preview utilities
-│   │   │   ├── __init__.py
-│   │   │   └── database_preview.py
-│   │   └── __init__.py
+│   │   └── preview/        # Preview utilities
+│   │       ├── __init__.py
+│   │       └── database_preview.py
 │   └── application/        # Business logic
 │       ├── __init__.py
 │       └── student_room_analyzer.py
@@ -160,6 +159,7 @@ The application follows SOLID principles with a clean, modular structure:
 - No unnecessary wrapper files
 - Direct imports from source modules
 - Clear dependency relationships
+- No main package `__init__.py` files for services and utils
 
 ### SOLID Principles Implementation
 
@@ -333,9 +333,10 @@ class PostgreSQLConnection(DatabaseConnection):
 3. **Import Errors**
    - Run `uv sync` to install dependencies
    - Ensure you're using the virtual environment
-   - Check that all `__init__.py` files are present
+   - Check that all `__init__.py` files are present in subdirectories
 
 4. **Module Not Found Errors**
    - Verify the directory structure matches the documentation
    - Check that imports use the correct paths (e.g., `src.services.connections`)
    - Ensure all subdirectories have `__init__.py` files
+   - Note: Main package `__init__.py` files are not required for services and utils
