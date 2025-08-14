@@ -1,20 +1,11 @@
 """
-Query service module for executing analysis queries.
+Student-room analysis query service implementation.
 """
 
-from typing import List, Dict, Any, Tuple
-from abc import ABC, abstractmethod
-from .database_manager import DatabaseConnection
+from typing import List, Tuple
+from ..protocols.query_service_protocol import QueryService
+from ..connections.database_connection import DatabaseConnection
 from src.data.enums import QueryType, SortOrder, AnalysisType, Constants, Gender
-
-
-class QueryService(ABC):
-    """Abstract base class for query services."""
-    
-    @abstractmethod
-    def execute_query(self, query: str, params: tuple = None) -> List[Tuple]:
-        """Execute a query and return results."""
-        pass
 
 
 class StudentRoomQueryService(QueryService):
