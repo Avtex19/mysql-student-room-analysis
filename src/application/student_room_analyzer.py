@@ -6,8 +6,11 @@ This module contains the main business logic for the student room analysis appli
 
 from src.config import APP_CONFIG
 from src.data import StudentDataLoader, RoomDataLoader
-from src.services import MySQLConnection, DatabaseManager, StudentRoomQueryService, ConsoleReportGenerator
-from src.utils import OptimizationAdvisor
+from src.services.connections import MySQLConnection
+from src.services.database import DatabaseManager
+from src.services.queries import StudentRoomQueryService
+from src.services.reports import ConsoleReportGenerator
+from src.utils.optimization import OptimizationAdvisor
 
 
 class StudentRoomAnalyzer:
