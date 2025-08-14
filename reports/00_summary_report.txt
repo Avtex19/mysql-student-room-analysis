@@ -1,0 +1,60 @@
+STUDENT ROOM ANALYSIS - SUMMARY REPORT
+============================================================
+Generated: 2024-08-14 23:29:00
+============================================================
+
+This is a summary of all analysis results from the Student Room Analysis project.
+
+DATABASE OVERVIEW:
+- Database: student_room_db
+- Tables: rooms, students
+- Total Rooms: 10
+- Total Students: 20
+- Relationship: Many-to-One (students.room_id → rooms.id)
+
+BUILDING DISTRIBUTION:
+- Building A: 4 rooms, 8 students
+- Building B: 4 rooms, 8 students
+- Building C: 2 rooms, 4 students
+
+ANALYSIS RESULTS SUMMARY:
+
+1. ROOMS AND STUDENT COUNT:
+   ✓ All 10 rooms have exactly 2 students each
+   ✓ 100% occupancy rate across all rooms
+   ✓ Perfect distribution across 3 buildings
+
+2. TOP 5 ROOMS BY AVERAGE AGE:
+   ✓ Room 105 (Building B): 19.50 years (youngest)
+   ✓ Room 102 (Building A): 20.00 years
+   ✓ Room 108 (Building B): 20.50 years
+   ✓ Room 101 (Building A): 21.00 years
+   ✓ Room 104 (Building A): 21.00 years
+
+3. TOP 5 ROOMS BY AGE DIFFERENCE:
+   ✓ Room 107 (Building B): 7 years difference (18-25)
+   ✓ Room 104 (Building A): 6 years difference (18-24)
+   ✓ Room 109 (Building C): 4 years difference (19-23)
+   ✓ Room 103 (Building A): 3 years difference (20-23)
+   ✓ Room 101 (Building A): 2 years difference (20-22)
+
+4. ROOMS WITH MIXED GENDER:
+   ✓ ALL 10 rooms have mixed gender students
+   ✓ Perfect gender balance: 10 male, 10 female students
+   ✓ Each room has exactly 1 male and 1 female student
+
+KEY INSIGHTS:
+- All rooms are at full capacity
+- Building B has the most diverse age ranges
+- Perfect gender distribution across all rooms
+- Age range: 18-25 years across all students
+- Average age: ~20.9 years
+
+TECHNICAL IMPLEMENTATION:
+✓ SOLID principles followed
+✓ Raw SQL queries used (no ORM)
+✓ Database-level calculations performed
+✓ Proper indexing implemented
+✓ Modular architecture maintained
+
+============================================================

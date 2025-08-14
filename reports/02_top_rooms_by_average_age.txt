@@ -1,0 +1,34 @@
+TOP 5 ROOMS BY SMALLEST AVERAGE AGE
+============================================================
+Generated: 2024-08-14 23:29:00
+============================================================
+
+This report shows the top 5 rooms with the smallest average student age.
+
+Room ID    | Number     | Building   | Students   | Avg Age   
+--------------------------------------------------------------
+105        | 105        | B          | 2          | 19.5000   
+102        | 102        | A          | 2          | 20.0000   
+108        | 108        | B          | 2          | 20.5000   
+101        | 101        | A          | 2          | 21.0000   
+104        | 104        | A          | 2          | 21.0000   
+109        | 109        | C          | 2          | 21.0000   
+110        | 110        | C          | 2          | 21.0000   
+103        | 103        | A          | 2          | 21.5000   
+106        | 106        | B          | 2          | 21.5000   
+107        | 107        | B          | 2          | 21.5000   
+
+TOP 5 ROOMS (REQUIRED TASK):
+1. Room 105 (Building B): 19.50 years average
+2. Room 102 (Building A): 20.00 years average  
+3. Room 108 (Building B): 20.50 years average
+4. Room 101 (Building A): 21.00 years average
+5. Room 104 (Building A): 21.00 years average
+
+ANALYSIS:
+- Youngest room: Room 105 with 19.5 years average age
+- Age range: 19.5 to 21.5 years across all rooms
+- Building B has the youngest rooms on average
+- All rooms have exactly 2 students
+
+============================================================

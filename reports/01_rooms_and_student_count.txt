@@ -1,0 +1,32 @@
+ROOMS AND STUDENT COUNT ANALYSIS
+============================================================
+Generated: 2024-08-14 23:29:00
+============================================================
+
+This report shows the list of rooms and the number of students in each.
+
+Room ID    | Number     | Building   | Capacity   | Students  
+--------------------------------------------------------------
+101        | 101        | A          | 2          | 2         
+102        | 102        | A          | 2          | 2         
+103        | 103        | A          | 2          | 2         
+104        | 104        | A          | 2          | 2         
+105        | 105        | B          | 2          | 2         
+106        | 106        | B          | 2          | 2         
+107        | 107        | B          | 2          | 2         
+108        | 108        | B          | 2          | 2         
+109        | 109        | C          | 2          | 2         
+110        | 110        | C          | 2          | 2         
+
+SUMMARY:
+- Total Rooms: 10
+- Total Students: 20
+- Average Students per Room: 2.0
+- All rooms are at full capacity (100% occupancy)
+
+BUILDING BREAKDOWN:
+- Building A: 4 rooms, 8 students
+- Building B: 4 rooms, 8 students  
+- Building C: 2 rooms, 4 students
+
+============================================================

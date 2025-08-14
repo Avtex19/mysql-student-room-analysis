@@ -1,0 +1,34 @@
+TOP 5 ROOMS BY LARGEST AGE DIFFERENCE
+============================================================
+Generated: 2024-08-14 23:29:00
+============================================================
+
+This report shows the top 5 rooms with the largest age difference among students.
+
+Room ID    | Number     | Building   | Students   | Age Diff   | Min Age    | Max Age   
+----------------------------------------------------------------------------------------
+107        | 107        | B          | 2          | 7          | 18         | 25        
+104        | 104        | A          | 2          | 6          | 18         | 24        
+109        | 109        | C          | 2          | 4          | 19         | 23        
+103        | 103        | A          | 2          | 3          | 20         | 23        
+101        | 101        | A          | 2          | 2          | 20         | 22        
+102        | 102        | A          | 2          | 2          | 19         | 21        
+110        | 110        | C          | 2          | 2          | 20         | 22        
+105        | 105        | B          | 2          | 1          | 19         | 20        
+106        | 106        | B          | 2          | 1          | 21         | 22        
+108        | 108        | B          | 2          | 1          | 20         | 21        
+
+TOP 5 ROOMS (REQUIRED TASK):
+1. Room 107 (Building B): 7 years difference (18-25 years)
+2. Room 104 (Building A): 6 years difference (18-24 years)
+3. Room 109 (Building C): 4 years difference (19-23 years)
+4. Room 103 (Building A): 3 years difference (20-23 years)
+5. Room 101 (Building A): 2 years difference (20-22 years)
+
+ANALYSIS:
+- Largest age gap: Room 107 with 7 years difference
+- Age differences range from 1 to 7 years
+- Building B has the most diverse age ranges
+- Most rooms have relatively small age differences (1-2 years)
+
+============================================================
