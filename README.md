@@ -10,6 +10,7 @@ This application demonstrates:
 - **Database-level calculations** for optimal performance
 - **Modular architecture** with clear separation of concerns
 - **Query optimization** with proper indexing strategies
+- **Clean code structure** with one class per file
 
 ## Requirements
 
@@ -32,7 +33,7 @@ uv sync
 
 ### 2. Configure Database
 
-Edit `config.py` and update the database configuration:
+Edit `src/config/config.py` and update the database configuration:
 
 ```python
 DB_CONFIG = {
@@ -53,14 +54,7 @@ DB_CONFIG = {
 uv run python main.py
 
 # Preview the database structure (no MySQL required)
-uv run python src/utils/preview_database.py
-
-# Preview database structure and data (no MySQL required)
-uv run python src/utils/preview_database.py
-
-
-
-
+uv run python src/utils/preview/database_preview.py
 ```
 
 ## Analysis Features
@@ -84,26 +78,54 @@ The application performs the following analyses:
 
 ## Architecture
 
-The application follows SOLID principles with the following structure:
+The application follows SOLID principles with a clean, modular structure:
 
 ```
-├── main.py                  # Main application orchestrator
+├── main.py                  # Main application entry point
 ├── src/                     # Source code package
 │   ├── config/             # Configuration settings
 │   │   ├── __init__.py
 │   │   └── config.py
-│   ├── data/               # Data loading abstraction
+│   ├── data/               # Data models and loading
 │   │   ├── __init__.py
-│   │   └── data_loader.py
-│   ├── services/           # Core services
-│   │   ├── __init__.py
-│   │   ├── database_manager.py
-│   │   ├── query_service.py
-│   │   └── report_generator.py
-│   └── utils/              # Utility modules
+│   │   ├── data_loader.py
+│   │   ├── models.py
+│   │   └── enums.py
+│   ├── services/           # Core services (one class per file)
+│   │   ├── connections/    # Database connections
+│   │   │   ├── __init__.py
+│   │   │   ├── database_connection.py
+│   │   │   └── mysql_connection.py
+│   │   ├── protocols/      # Service interfaces
+│   │   │   ├── __init__.py
+│   │   │   ├── room_repository_protocol.py
+│   │   │   ├── student_repository_protocol.py
+│   │   │   ├── query_service_protocol.py
+│   │   │   └── report_generator_protocol.py
+│   │   ├── repositories/   # Repository implementations
+│   │   │   ├── __init__.py
+│   │   │   ├── mysql_room_repository.py
+│   │   │   └── mysql_student_repository.py
+│   │   ├── queries/        # Query services
+│   │   │   ├── __init__.py
+│   │   │   └── student_room_query_service.py
+│   │   ├── reports/        # Report generators
+│   │   │   ├── __init__.py
+│   │   │   └── console_report_generator.py
+│   │   └── database/       # Database management
+│   │       ├── __init__.py
+│   │       └── database_manager.py
+│   ├── utils/              # Utility modules (one class per file)
+│   │   ├── optimization/   # Optimization utilities
+│   │   │   ├── __init__.py
+│   │   │   └── optimization_advisor.py
+│   │   ├── preview/        # Preview utilities
+│   │   │   ├── __init__.py
+│   │   │   └── database_preview.py
+│   │   └── __init__.py
+│   └── application/        # Business logic
 │       ├── __init__.py
-│       ├── optimization_advisor.py
-│       └── preview_database.py
+│       └── student_room_analyzer.py
 ├── data/                   # Data files
 │   ├── students.json
 │   └── rooms.json
@@ -117,33 +139,60 @@ The application follows SOLID principles with the following structure:
 └── README.md               # This file
 ```
 
+### Clean Code Principles
+
+#### One Class Per File
+- Each file contains exactly one class
+- Clear separation of concerns
+- Easy to locate and maintain specific functionality
+
+#### Logical Directory Organization
+- **connections/**: Database connection abstractions and implementations
+- **protocols/**: Service interfaces and contracts
+- **repositories/**: Data access layer implementations
+- **queries/**: Business logic query services
+- **reports/**: Output formatting and presentation
+- **database/**: Database schema and management
+- **optimization/**: Performance optimization utilities
+- **preview/**: Database preview and inspection tools
+
+#### Direct Imports
+- No unnecessary wrapper files
+- Direct imports from source modules
+- Clear dependency relationships
+
 ### SOLID Principles Implementation
 
 #### Single Responsibility Principle (SRP)
-- `DataLoader`: Only responsible for loading data
-- `DatabaseManager`: Only responsible for database operations
-- `QueryService`: Only responsible for executing queries
-- `ReportGenerator`: Only responsible for formatting reports
+- Each class has a single, well-defined responsibility
+- `DatabaseConnection`: Only handles database connections
+- `MySQLRoomRepository`: Only handles room data operations
+- `StudentRoomQueryService`: Only handles student-room queries
+- `ConsoleReportGenerator`: Only handles console output formatting
 
 #### Open/Closed Principle (OCP)
 - Abstract base classes allow extension without modification
-- New data sources can be added by implementing `DataLoader`
+- New database connections can be added by implementing `DatabaseConnection`
 - New report formats can be added by implementing `ReportGenerator`
+- New repositories can be added by implementing `RoomRepository`/`StudentRepository`
 
 #### Liskov Substitution Principle (LSP)
 - Concrete implementations can be substituted for abstract classes
 - `MySQLConnection` can be substituted for `DatabaseConnection`
 - `ConsoleReportGenerator` can be substituted for `ReportGenerator`
+- `MySQLRoomRepository` can be substituted for `RoomRepository`
 
 #### Interface Segregation Principle (ISP)
 - Clients depend only on the interfaces they use
 - `QueryService` only depends on `DatabaseConnection.fetch_all()`
 - `ReportGenerator` only depends on data formatting methods
+- `Repository` interfaces are specific to their domain
 
 #### Dependency Inversion Principle (DIP)
 - High-level modules don't depend on low-level modules
 - `StudentRoomAnalyzer` depends on abstractions, not concrete implementations
 - Dependencies are injected through constructors
+- All dependencies flow toward abstractions
 
 ## 🗄️ Database Schema
 
@@ -234,7 +283,7 @@ Implement the `DataLoader` interface:
 
 ```python
 class CustomDataLoader(DataLoader):
-    def load(self) -> List[Dict[str, Any]]:
+    def load_models(self) -> List[YourModel]:
         # Your custom loading logic
         pass
 ```
@@ -244,13 +293,13 @@ Implement the `ReportGenerator` interface:
 
 ```python
 class HTMLReportGenerator(ReportGenerator):
-    def generate_report(self, data: List[Tuple], title: str) -> str:
+    def format_rooms_with_student_count(self, data: List[Tuple]) -> str:
         # Your HTML formatting logic
         pass
 ```
 
 ### Adding New Queries
-Extend the `QueryService` class:
+Extend the `StudentRoomQueryService` class:
 
 ```python
 def get_custom_analysis(self) -> List[Tuple]:
@@ -258,7 +307,15 @@ def get_custom_analysis(self) -> List[Tuple]:
     return self.execute_query(query)
 ```
 
+### Adding New Database Connections
+Implement the `DatabaseConnection` interface:
 
+```python
+class PostgreSQLConnection(DatabaseConnection):
+    def connect(self):
+        # Your PostgreSQL connection logic
+        pass
+```
 
 ## Troubleshooting
 
@@ -266,7 +323,7 @@ def get_custom_analysis(self) -> List[Tuple]:
 
 1. **MySQL Connection Error**
    - Verify MySQL server is running
-   - Check credentials in `config.py`
+   - Check credentials in `src/config/config.py`
    - Ensure database user has proper permissions
 
 2. **File Not Found Error**
@@ -276,3 +333,9 @@ def get_custom_analysis(self) -> List[Tuple]:
 3. **Import Errors**
    - Run `uv sync` to install dependencies
    - Ensure you're using the virtual environment
+   - Check that all `__init__.py` files are present
+
+4. **Module Not Found Errors**
+   - Verify the directory structure matches the documentation
+   - Check that imports use the correct paths (e.g., `src.services.connections`)
+   - Ensure all subdirectories have `__init__.py` files
