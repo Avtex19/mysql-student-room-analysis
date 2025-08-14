@@ -35,13 +35,6 @@ class Building(Enum):
         return value in cls.values()
 
 
-class DatabaseType(Enum):
-    """Database type enumeration."""
-    MYSQL = 'mysql'
-    POSTGRESQL = 'postgresql'
-    SQLITE = 'sqlite'
-
-
 class QueryType(Enum):
     """Query type enumeration."""
     SELECT = 'SELECT'

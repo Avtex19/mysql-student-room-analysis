@@ -5,24 +5,10 @@ This module handles loading data from various sources.
 """
 
 import json
-from typing import List, Dict, Any, Protocol
+from typing import List, Dict, Any
 from abc import ABC, abstractmethod
 from ..models import Room, Student
 from ..enums import Constants
-
-
-class DataValidator(Protocol):
-    """Protocol for data validation."""
-    
-    @staticmethod
-    def validate_room_data(data: Dict[str, Any]) -> bool:
-        """Validate room data."""
-        ...
-    
-    @staticmethod
-    def validate_student_data(data: Dict[str, Any]) -> bool:
-        """Validate student data."""
-        ...
 
 
 class JsonDataValidator:
@@ -53,9 +39,8 @@ class DataLoader(ABC):
 class JsonDataLoader(DataLoader):
     """JSON file data loader."""
     
-    def __init__(self, file_path: str, validator: DataValidator):
+    def __init__(self, file_path: str):
         self.file_path = file_path
-        self.validator = validator
     
     def load(self) -> List[Dict[str, Any]]:
         """Load data from JSON file."""
@@ -86,7 +71,7 @@ class RoomDataLoader(ModelDataLoader):
     """Loader for Room models."""
     
     def __init__(self, file_path: str = Constants.DEFAULT_ROOMS_FILE):
-        self.json_loader = JsonDataLoader(file_path, JsonDataValidator())
+        self.json_loader = JsonDataLoader(file_path)
     
     def load_models(self) -> List[Room]:
         """Load rooms from JSON and convert to Room objects."""
@@ -110,7 +95,7 @@ class StudentDataLoader(ModelDataLoader):
     """Loader for Student models."""
     
     def __init__(self, file_path: str = Constants.DEFAULT_STUDENTS_FILE):
-        self.json_loader = JsonDataLoader(file_path, JsonDataValidator())
+        self.json_loader = JsonDataLoader(file_path)
     
     def load_models(self) -> List[Student]:
         """Load students from JSON and convert to Student objects."""

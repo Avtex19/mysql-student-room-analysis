@@ -6,7 +6,7 @@ This module provides configuration management using dataclasses.
 
 from dataclasses import dataclass
 from typing import Dict, Any
-from src.data.enums import DatabaseType, Constants
+from src.data.enums import Constants
 
 
 @dataclass
@@ -19,7 +19,6 @@ class DatabaseConfig:
     port: int
     charset: str
     collation: str
-    db_type: DatabaseType = DatabaseType.MYSQL
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary for mysql-connector."""
@@ -64,8 +63,7 @@ DEFAULT_DB_CONFIG = DatabaseConfig(
     database='student_room_db',
     port=Constants.DEFAULT_DB_PORT,
     charset=Constants.DEFAULT_DB_CHARSET,
-    collation=Constants.DEFAULT_DB_COLLATION,
-    db_type=DatabaseType.MYSQL
+    collation=Constants.DEFAULT_DB_COLLATION
 )
 
 DEFAULT_FILE_PATHS = FilePaths(

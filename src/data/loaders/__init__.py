@@ -3,11 +3,11 @@ Data loaders package for Student Room Analysis.
 """
 
 from .data_loader import (
-    StudentDataLoader, RoomDataLoader,
-    DataLoader, JsonDataLoader, ModelDataLoader, DataValidator, JsonDataValidator
+    DataLoader, JsonDataLoader, ModelDataLoader,
+    RoomDataLoader, StudentDataLoader
 )
 
 __all__ = [
-    'StudentDataLoader', 'RoomDataLoader',
-    'DataLoader', 'JsonDataLoader', 'ModelDataLoader', 'DataValidator', 'JsonDataValidator'
+    'DataLoader', 'JsonDataLoader', 'ModelDataLoader',
+    'RoomDataLoader', 'StudentDataLoader'
 ]
