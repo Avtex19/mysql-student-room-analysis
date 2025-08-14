@@ -1,6 +1,6 @@
 # Student Room Analysis - MySQL & Python
 
-A comprehensive Python application for analyzing student room data using MySQL, following SOLID principles and best practices.
+A comprehensive Python application for analyzing student room data using MySQL, following SOLID principles
 
 ## Project Overview
 
