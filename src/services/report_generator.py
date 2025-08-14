@@ -77,7 +77,7 @@ class ConsoleReportGenerator(ReportGenerator):
 
     def format_top_rooms_by_age_difference(self, data: List[Tuple]) -> str:
         """Format top rooms by age difference data."""
-        headers = ["Room ID", "Number", "Building", "Students", "Age Diff"]
+        headers = ["Room ID", "Number", "Building", "Students", "Age Diff", "Min Age", "Max Age"]
         return self._format_table(data, headers, "TOP 5 ROOMS BY LARGEST AGE DIFFERENCE")
 
     def format_rooms_with_mixed_sex(self, data: List[Tuple]) -> str:
@@ -87,12 +87,12 @@ class ConsoleReportGenerator(ReportGenerator):
 
     def format_room_occupancy_analysis(self, data: List[Tuple]) -> str:
         """Format room occupancy analysis data."""
-        headers = ["Room ID", "Number", "Building", "Capacity", "Occupied", "Percentage"]
+        headers = ["Room ID", "Number", "Building", "Capacity", "Occupied", "Available", "Percentage"]
         return self._format_table(data, headers, "ROOM OCCUPANCY ANALYSIS")
 
     def format_age_distribution_by_building(self, data: List[Tuple]) -> str:
         """Format age distribution by building data."""
-        headers = ["Building", "Students", "Avg Age", "Min Age", "Max Age"]
+        headers = ["Building", "Students", "Avg Age", "Min Age", "Max Age", "Std Dev"]
         return self._format_table(data, headers, "AGE DISTRIBUTION BY BUILDING")
 
     def display_rooms_with_student_count(self, data: List[Tuple]):
