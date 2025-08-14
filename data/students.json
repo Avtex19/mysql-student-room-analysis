@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "age": 20,
+    "sex": "F",
+    "room_id": 101
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "age": 22,
+    "sex": "M",
+    "room_id": 101
+  },
+  {
+    "id": 3,
+    "name": "Carol Davis",
+    "age": 19,
+    "sex": "F",
+    "room_id": 102
+  },
+  {
+    "id": 4,
+    "name": "David Wilson",
+    "age": 21,
+    "sex": "M",
+    "room_id": 102
+  },
+  {
+    "id": 5,
+    "name": "Eva Brown",
+    "age": 20,
+    "sex": "F",
+    "room_id": 103
+  },
+  {
+    "id": 6,
+    "name": "Frank Miller",
+    "age": 23,
+    "sex": "M",
+    "room_id": 103
+  },
+  {
+    "id": 7,
+    "name": "Grace Taylor",
+    "age": 18,
+    "sex": "F",
+    "room_id": 104
+  },
+  {
+    "id": 8,
+    "name": "Henry Anderson",
+    "age": 24,
+    "sex": "M",
+    "room_id": 104
+  },
+  {
+    "id": 9,
+    "name": "Ivy Martinez",
+    "age": 19,
+    "sex": "F",
+    "room_id": 105
+  },
+  {
+    "id": 10,
+    "name": "Jack Garcia",
+    "age": 20,
+    "sex": "M",
+    "room_id": 105
+  },
+  {
+    "id": 11,
+    "name": "Kate Rodriguez",
+    "age": 21,
+    "sex": "F",
+    "room_id": 106
+  },
+  {
+    "id": 12,
+    "name": "Liam Thompson",
+    "age": 22,
+    "sex": "M",
+    "room_id": 106
+  },
+  {
+    "id": 13,
+    "name": "Mia White",
+    "age": 18,
+    "sex": "F",
+    "room_id": 107
+  },
+  {
+    "id": 14,
+    "name": "Noah Clark",
+    "age": 25,
+    "sex": "M",
+    "room_id": 107
+  },
+  {
+    "id": 15,
+    "name": "Olivia Lewis",
+    "age": 20,
+    "sex": "F",
+    "room_id": 108
+  },
+  {
+    "id": 16,
+    "name": "Paul Hall",
+    "age": 21,
+    "sex": "M",
+    "room_id": 108
+  },
+  {
+    "id": 17,
+    "name": "Quinn Young",
+    "age": 19,
+    "sex": "F",
+    "room_id": 109
+  },
+  {
+    "id": 18,
+    "name": "Ryan King",
+    "age": 23,
+    "sex": "M",
+    "room_id": 109
+  },
+  {
+    "id": 19,
+    "name": "Sophia Lee",
+    "age": 20,
+    "sex": "F",
+    "room_id": 110
+  },
+  {
+    "id": 20,
+    "name": "Thomas Scott",
+    "age": 22,
+    "sex": "M",
+    "room_id": 110
+  }
+]
