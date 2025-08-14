@@ -11,6 +11,7 @@ This application demonstrates:
 - **Modular architecture** with clear separation of concerns
 - **Query optimization** with proper indexing strategies
 - **Clean code structure** with one class per file
+- **Zero unused code** - every line serves a purpose
 
 ## Requirements
 
@@ -36,15 +37,15 @@ uv sync
 Edit `src/config/config.py` and update the database configuration:
 
 ```python
-DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'your_mysql_password',  # Set your MySQL password
-    'database': 'student_room_db',
-    'port': 3306,
-    'charset': 'utf8mb4',
-    'collation': 'utf8mb4_unicode_ci'
-}
+DEFAULT_DB_CONFIG = DatabaseConfig(
+    host='localhost',
+    user='root',
+    password='your_mysql_password',  # Set your MySQL password
+    database='student_room_db',
+    port=3306,
+    charset='utf8mb4',
+    collation='utf8mb4_unicode_ci'
+)
 ```
 
 ### 3. Run the Application
@@ -103,8 +104,6 @@ The application follows SOLID principles with a clean, modular structure:
 │   │   │   └── mysql_connection.py
 │   │   ├── protocols/      # Service interfaces
 │   │   │   ├── __init__.py
-│   │   │   ├── room_repository_protocol.py
-│   │   │   ├── student_repository_protocol.py
 │   │   │   ├── query_service_protocol.py
 │   │   │   └── report_generator_protocol.py
 │   │   ├── repositories/   # Repository implementations
@@ -130,9 +129,6 @@ The application follows SOLID principles with a clean, modular structure:
 │   └── application/        # Business logic
 │       ├── __init__.py
 │       └── student_room_analyzer.py
-├── data/                   # Data files
-│   ├── students.json
-│   └── rooms.json
 ├── data/                   # Data files
 │   ├── students.json
 │   └── rooms.json
@@ -182,19 +178,19 @@ The application follows SOLID principles with a clean, modular structure:
 - Abstract base classes allow extension without modification
 - New database connections can be added by implementing `DatabaseConnection`
 - New report formats can be added by implementing `ReportGenerator`
-- New repositories can be added by implementing `RoomRepository`/`StudentRepository`
+- New query services can be added by implementing `QueryService`
 
 #### Liskov Substitution Principle (LSP)
 - Concrete implementations can be substituted for abstract classes
 - `MySQLConnection` can be substituted for `DatabaseConnection`
 - `ConsoleReportGenerator` can be substituted for `ReportGenerator`
-- `MySQLRoomRepository` can be substituted for `RoomRepository`
+- `StudentRoomQueryService` can be substituted for `QueryService`
 
 #### Interface Segregation Principle (ISP)
 - Clients depend only on the interfaces they use
 - `QueryService` only depends on `DatabaseConnection.fetch_all()`
 - `ReportGenerator` only depends on data formatting methods
-- `Repository` interfaces are specific to their domain
+- Each protocol is focused and minimal
 
 #### Dependency Inversion Principle (DIP)
 - High-level modules don't depend on low-level modules
@@ -202,7 +198,7 @@ The application follows SOLID principles with a clean, modular structure:
 - Dependencies are injected through constructors
 - All dependencies flow toward abstractions
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Rooms Table
 ```sql
@@ -267,20 +263,20 @@ The application generates formatted reports like:
 
 ```
 ROOMS AND STUDENT COUNT
-================================================================================
-Room ID    Number     Building   Capacity   Students  
-------------------------------------------------------------
-101        101        A          2          2         
-102        102        A          2          2         
-103        103        A          2          2         
+--------------------------------------------------------------
+Room ID    | Number     | Building   | Capacity   | Students  
+--------------------------------------------------------------
+101        | 101        | A          | 2          | 2         
+102        | 102        | A          | 2          | 2         
+103        | 103        | A          | 2          | 2         
 ...
 
-TOP 5 ROOMS WITH SMALLEST AVERAGE STUDENT AGE
-================================================================================
-Room ID    Number     Building   Students   Avg Age   
-------------------------------------------------------------
-107        107        B          2          21.50     
-104        104        A          2          21.00     
+TOP 5 ROOMS BY SMALLEST AVERAGE AGE
+--------------------------------------------------------------
+Room ID    | Number     | Building   | Students   | Avg Age   
+--------------------------------------------------------------
+105        | 105        | B          | 2          | 19.5000   
+102        | 102        | A          | 2          | 20.0000   
 ...
 ```
 
@@ -357,3 +353,27 @@ class PostgreSQLConnection(DatabaseConnection):
    - Ensure all subdirectories have `__init__.py` files
    - Note: Main package `__init__.py` files are not required for services, utils, and data
    - Use direct imports: `from src.data.models import Room, Student`
+
+## Code Quality
+
+### Zero Unused Code
+- All imports are actively used
+- All classes serve a purpose
+- All methods are called
+- All constants are referenced
+- All enums are utilized
+- No dead code or unused variables
+
+### Clean Architecture
+- Clear separation of concerns
+- Dependency injection
+- Interface segregation
+- Single responsibility per class
+- Open for extension, closed for modification
+
+### Performance Optimized
+- Database-level calculations
+- Proper indexing strategy
+- Efficient SQL queries
+- Bulk operations for data insertion
+- Connection pooling ready
