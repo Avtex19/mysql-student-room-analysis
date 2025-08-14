@@ -59,6 +59,8 @@ uv run python src/utils/preview_database.py
 uv run python src/utils/preview_database.py
 
 
+
+
 ```
 
 ## Analysis Features
@@ -105,6 +107,13 @@ The application follows SOLID principles with the following structure:
 ├── data/                   # Data files
 │   ├── students.json
 │   └── rooms.json
+├── reports/                # Analysis reports by subtask
+│   ├── 00_summary_report.txt
+│   ├── 01_rooms_and_student_count.txt
+│   ├── 02_top_rooms_by_average_age.txt
+│   ├── 03_top_rooms_by_age_difference.txt
+│   ├── 04_rooms_with_mixed_sex.txt
+│   └── 05_optimization_recommendations.txt
 └── README.md               # This file
 ```
 
