@@ -25,7 +25,9 @@ class StudentRoomAnalyzer:
     def setup_database_connection(self):
         """Setup database connection and services."""
         db_config = self.config.database.to_dict()
-        self.connection = MySQLConnection(db_config)
+        db_config_no_db = db_config.copy()
+        db_config_no_db.pop('database', None)
+        self.connection = MySQLConnection(db_config_no_db)
         self.connection.connect()
         self.db_manager = DatabaseManager(self.connection)
         self.query_service = StudentRoomQueryService(self.connection)
@@ -36,6 +38,14 @@ class StudentRoomAnalyzer:
         """Create database and tables."""
         print("Creating database schema...")
         self.db_manager.create_database()
+        
+        db_config = self.config.database.to_dict()
+        self.connection.disconnect()
+        self.connection = MySQLConnection(db_config)
+        self.connection.connect()
+        self.db_manager = DatabaseManager(self.connection)
+        self.query_service = StudentRoomQueryService(self.connection)
+        
         self.db_manager.create_schema()
         print("✓ Database schema created successfully")
 
