@@ -7,8 +7,8 @@ This module handles loading data from various sources.
 import json
 from typing import List, Dict, Any, Protocol
 from abc import ABC, abstractmethod
-from .models import Room, Student
-from .enums import DataSource, Constants
+from ..models import Room, Student
+from ..enums import DataSource, Constants
 
 
 class DataValidator(Protocol):
