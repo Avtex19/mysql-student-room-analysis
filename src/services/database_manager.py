@@ -77,6 +77,15 @@ class MySQLConnection(DatabaseConnection):
             print(f"Error executing query: {e}")
             raise
 
+    def execute_many(self, query: str, params_list: List[tuple]):
+        """Execute a SQL query with multiple parameter sets."""
+        try:
+            self.cursor.executemany(query, params_list)
+            self.connection.commit()
+        except mysql.connector.Error as e:
+            print(f"Error executing batch query: {e}")
+            raise
+
     def fetch_all(self, query: str, params: tuple = None) -> List[tuple]:
         """Fetch all results from a query."""
         try:
