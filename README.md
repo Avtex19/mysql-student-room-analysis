@@ -86,11 +86,16 @@ The application follows SOLID principles with a clean, modular structure:
 │   ├── config/             # Configuration settings
 │   │   ├── __init__.py
 │   │   └── config.py
-│   ├── data/               # Data models and loading
-│   │   ├── __init__.py
-│   │   ├── data_loader.py
-│   │   ├── models.py
-│   │   └── enums.py
+│   ├── data/               # Data models and loading (one class per file)
+│   │   ├── models/         # Data models and structures
+│   │   │   ├── __init__.py
+│   │   │   └── models.py
+│   │   ├── enums/          # Enumerations and constants
+│   │   │   ├── __init__.py
+│   │   │   └── enums.py
+│   │   └── loaders/        # Data loading functionality
+│   │       ├── __init__.py
+│   │       └── data_loader.py
 │   ├── services/           # Core services (one class per file)
 │   │   ├── connections/    # Database connections
 │   │   │   ├── __init__.py
@@ -128,13 +133,9 @@ The application follows SOLID principles with a clean, modular structure:
 ├── data/                   # Data files
 │   ├── students.json
 │   └── rooms.json
-├── reports/                # Analysis reports by subtask
-│   ├── 00_summary_report.txt
-│   ├── 01_rooms_and_student_count.txt
-│   ├── 02_top_rooms_by_average_age.txt
-│   ├── 03_top_rooms_by_age_difference.txt
-│   ├── 04_rooms_with_mixed_sex.txt
-│   └── 05_optimization_recommendations.txt
+├── data/                   # Data files
+│   ├── students.json
+│   └── rooms.json
 └── README.md               # This file
 ```
 
@@ -146,6 +147,9 @@ The application follows SOLID principles with a clean, modular structure:
 - Easy to locate and maintain specific functionality
 
 #### Logical Directory Organization
+- **models/**: Data models and structures (Room, Student dataclasses)
+- **enums/**: Enumerations and constants (Gender, Building, Constants)
+- **loaders/**: Data loading functionality (JSON loaders, validators)
 - **connections/**: Database connection abstractions and implementations
 - **protocols/**: Service interfaces and contracts
 - **repositories/**: Data access layer implementations
@@ -159,7 +163,11 @@ The application follows SOLID principles with a clean, modular structure:
 - No unnecessary wrapper files
 - Direct imports from source modules
 - Clear dependency relationships
-- No main package `__init__.py` files for services and utils
+- No main package `__init__.py` files for services, utils, and data
+- Import examples:
+  - `from src.data.models import Room, Student`
+  - `from src.data.enums import Gender, Building, Constants`
+  - `from src.data.loaders import StudentDataLoader, RoomDataLoader`
 
 ### SOLID Principles Implementation
 
@@ -282,6 +290,8 @@ Room ID    Number     Building   Students   Avg Age
 Implement the `DataLoader` interface:
 
 ```python
+from src.data.loaders import DataLoader
+
 class CustomDataLoader(DataLoader):
     def load_models(self) -> List[YourModel]:
         # Your custom loading logic
@@ -292,6 +302,8 @@ class CustomDataLoader(DataLoader):
 Implement the `ReportGenerator` interface:
 
 ```python
+from src.services.protocols import ReportGenerator
+
 class HTMLReportGenerator(ReportGenerator):
     def format_rooms_with_student_count(self, data: List[Tuple]) -> str:
         # Your HTML formatting logic
@@ -302,6 +314,8 @@ class HTMLReportGenerator(ReportGenerator):
 Extend the `StudentRoomQueryService` class:
 
 ```python
+from src.services.queries import StudentRoomQueryService
+
 def get_custom_analysis(self) -> List[Tuple]:
     query = "YOUR SQL QUERY HERE"
     return self.execute_query(query)
@@ -311,6 +325,8 @@ def get_custom_analysis(self) -> List[Tuple]:
 Implement the `DatabaseConnection` interface:
 
 ```python
+from src.services.connections import DatabaseConnection
+
 class PostgreSQLConnection(DatabaseConnection):
     def connect(self):
         # Your PostgreSQL connection logic
@@ -339,4 +355,5 @@ class PostgreSQLConnection(DatabaseConnection):
    - Verify the directory structure matches the documentation
    - Check that imports use the correct paths (e.g., `src.services.connections`)
    - Ensure all subdirectories have `__init__.py` files
-   - Note: Main package `__init__.py` files are not required for services and utils
+   - Note: Main package `__init__.py` files are not required for services, utils, and data
+   - Use direct imports: `from src.data.models import Room, Student`
