@@ -3,7 +3,6 @@ Data models for the student room analysis application.
 """
 
 from dataclasses import dataclass
-from typing import Optional
 from .enums import Gender, Building, Constants
 
 

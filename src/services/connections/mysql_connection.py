@@ -3,7 +3,7 @@ MySQL Connection implementation for Student Room Analysis.
 """
 
 import mysql.connector
-from typing import List, Optional
+from typing import List
 from .database_connection import DatabaseConnection
 from src.data.enums import Constants
 

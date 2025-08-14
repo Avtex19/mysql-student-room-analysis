@@ -5,7 +5,7 @@ This module handles database operations and schema management.
 """
 
 import mysql.connector
-from typing import List, Optional
+from typing import List
 from src.config.config import *
 from src.data.models import Room, Student
 from src.data.enums import Constants

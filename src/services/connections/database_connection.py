@@ -4,7 +4,7 @@ Database Connection abstract base class.
 This module defines the interface for database connections.
 """
 
-from typing import List, Optional
+from typing import List
 from abc import ABC, abstractmethod
 
 
