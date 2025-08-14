@@ -71,26 +71,3 @@ class OptimizationAdvisor:
             "  - Use connection pooling for multiple concurrent connections",
             "  - Implement caching for frequently accessed data"
         ])
-
-    def get_create_index_statements(self) -> List[str]:
-        """Get SQL statements for creating recommended indexes."""
-        return [
-            "CREATE INDEX idx_student_name ON students(name);",
-            "CREATE INDEX idx_room_number ON rooms(number);",
-            "CREATE INDEX idx_building_room ON rooms(building, number);",
-            "CREATE INDEX idx_student_room_age ON students(room_id, age);",
-            "CREATE INDEX idx_student_room_sex ON students(room_id, sex);"
-        ]
-
-    def get_optimization_checklist(self) -> List[str]:
-        """Get a checklist for database optimization."""
-        return [
-            "✓ Primary keys defined on all tables",
-            "✓ Foreign key constraints properly set",
-            "✓ Indexes on frequently queried columns",
-            "✓ Composite indexes for multi-column queries",
-            "✓ Appropriate data types used",
-            "✓ Query execution plans analyzed",
-            "✓ Slow query log enabled and monitored",
-            "✓ Table statistics updated regularly"
-        ]

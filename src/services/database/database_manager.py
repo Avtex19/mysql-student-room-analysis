@@ -63,23 +63,3 @@ class DatabaseManager:
         except Exception as e:
             print(f"Error inserting students: {e}")
             raise
-
-    def get_all_rooms(self) -> List[Room]:
-        """Get all rooms from the database."""
-        return self.room_repository.get_all()
-
-    def get_all_students(self) -> List[Student]:
-        """Get all students from the database."""
-        return self.student_repository.get_all()
-
-    def get_students_by_room(self, room_id: int) -> List[Student]:
-        """Get students by room ID."""
-        return self.student_repository.get_by_room_id(room_id)
-
-    def get_room_by_id(self, room_id: int) -> Optional[Room]:
-        """Get room by ID."""
-        return self.room_repository.get_by_id(room_id)
-
-    def get_student_by_id(self, student_id: int) -> Optional[Student]:
-        """Get student by ID."""
-        return self.student_repository.get_by_id(student_id)

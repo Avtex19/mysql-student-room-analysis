@@ -42,22 +42,6 @@ class DatabaseType(Enum):
     SQLITE = 'sqlite'
 
 
-class Environment(Enum):
-    """Environment enumeration."""
-    DEVELOPMENT = 'development'
-    TESTING = 'testing'
-    STAGING = 'staging'
-    PRODUCTION = 'production'
-    
-    @classmethod
-    def is_production(cls, env: str) -> bool:
-        return env == cls.PRODUCTION.value
-    
-    @classmethod
-    def is_development(cls, env: str) -> bool:
-        return env == cls.DEVELOPMENT.value
-
-
 class QueryType(Enum):
     """Query type enumeration."""
     SELECT = 'SELECT'
@@ -85,38 +69,10 @@ class DataSource(Enum):
     API = 'api'
 
 
-class ValidationRule(Enum):
-    """Validation rule enumeration."""
-    REQUIRED = 'required'
-    MIN_LENGTH = 'min_length'
-    MAX_LENGTH = 'max_length'
-    MIN_VALUE = 'min_value'
-    MAX_VALUE = 'max_value'
-    PATTERN = 'pattern'
-    ENUM = 'enum'
-
-
-class IndexType(Enum):
-    """Database index type enumeration."""
-    PRIMARY = 'PRIMARY'
-    UNIQUE = 'UNIQUE'
-    INDEX = 'INDEX'
-    FULLTEXT = 'FULLTEXT'
-
-
 class SortOrder(Enum):
     """Sort order enumeration."""
     ASC = 'ASC'
     DESC = 'DESC'
-
-
-class ReportFormat(Enum):
-    """Report format enumeration."""
-    CONSOLE = 'console'
-    HTML = 'html'
-    CSV = 'csv'
-    JSON = 'json'
-    PDF = 'pdf'
 
 
 class Constants:
@@ -129,7 +85,6 @@ class Constants:
     MAX_ROOM_NUMBER_LENGTH = 10
     MAX_BUILDING_LENGTH = 10
     DEFAULT_QUERY_LIMIT = 10
-    MAX_QUERY_LIMIT = 1000
     DEFAULT_STUDENTS_FILE = 'data/students.json'
     DEFAULT_ROOMS_FILE = 'data/rooms.json'
     DEFAULT_DB_HOST = 'localhost'

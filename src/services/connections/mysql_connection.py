@@ -60,12 +60,3 @@ class MySQLConnection(DatabaseConnection):
         except mysql.connector.Error as e:
             print(f"Error fetching data: {e}")
             raise
-
-    def fetch_one(self, query: str, params: tuple = None) -> Optional[tuple]:
-        """Fetch one result from a query."""
-        try:
-            self.cursor.execute(query, params)
-            return self.cursor.fetchone()
-        except mysql.connector.Error as e:
-            print(f"Error fetching data: {e}")
-            raise

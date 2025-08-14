@@ -25,15 +25,6 @@ class MySQLStudentRepository:
         """
         self.connection.execute(query, (student.id, student.name, student.age, student.sex, student.room_id))
     
-    def get_by_id(self, student_id: int) -> Optional[Student]:
-        """Get student by ID."""
-        query = "SELECT id, name, age, sex, room_id FROM students WHERE id = %s"
-        result = self.connection.fetch_all(query, (student_id,))
-        if result:
-            row = result[0]
-            return Student(id=row[0], name=row[1], age=row[2], sex=row[3], room_id=row[4])
-        return None
-    
     def get_all(self) -> List[Student]:
         """Get all students."""
         query = "SELECT id, name, age, sex, room_id FROM students ORDER BY id"
@@ -51,20 +42,6 @@ class MySQLStudentRepository:
             Student(id=row[0], name=row[1], age=row[2], sex=row[3], room_id=row[4])
             for row in results
         ]
-    
-    def update(self, student: Student) -> None:
-        """Update a student."""
-        query = """
-        UPDATE students 
-        SET name = %s, age = %s, sex = %s, room_id = %s 
-        WHERE id = %s
-        """
-        self.connection.execute(query, (student.name, student.age, student.sex, student.room_id, student.id))
-    
-    def delete(self, student_id: int) -> None:
-        """Delete a student."""
-        query = "DELETE FROM students WHERE id = %s"
-        self.connection.execute(query, (student_id,))
     
     def bulk_create(self, students: List[Student]) -> None:
         """Create multiple students."""

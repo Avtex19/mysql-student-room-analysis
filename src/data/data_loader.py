@@ -130,17 +130,3 @@ class StudentDataLoader(ModelDataLoader):
                 students.append(student)
         
         return students
-
-
-class StudentsDataLoader(JsonDataLoader):
-    """Legacy compatibility class for students data loading."""
-    
-    def __init__(self, file_path: str = Constants.DEFAULT_STUDENTS_FILE):
-        super().__init__(file_path, JsonDataValidator())
-
-
-class RoomsDataLoader(JsonDataLoader):
-    """Legacy compatibility class for rooms data loading."""
-    
-    def __init__(self, file_path: str = Constants.DEFAULT_ROOMS_FILE):
-        super().__init__(file_path, JsonDataValidator())
