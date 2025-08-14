@@ -58,8 +58,7 @@ uv run python src/utils/preview_database.py
 # Preview database structure and data (no MySQL required)
 uv run python src/utils/preview_database.py
 
-# Run tests
-uv run python tests/test_setup.py
+
 ```
 
 ## Analysis Features
@@ -106,9 +105,6 @@ The application follows SOLID principles with the following structure:
 ├── data/                   # Data files
 │   ├── students.json
 │   └── rooms.json
-├── tests/                  # Test files
-│   ├── __init__.py
-│   └── test_setup.py
 └── README.md               # This file
 ```
 
