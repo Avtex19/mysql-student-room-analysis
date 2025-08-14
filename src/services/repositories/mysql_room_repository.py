@@ -2,7 +2,7 @@
 MySQL Room Repository implementation for database operations.
 """
 
-from typing import List, Optional
+from typing import List
 from src.data.models import Room
 
 

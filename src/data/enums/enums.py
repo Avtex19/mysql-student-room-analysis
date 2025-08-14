@@ -99,7 +99,3 @@ class Constants:
     SUCCESS_DB_CLOSED = "Database connection closed"
     SUCCESS_SCHEMA_CREATED = "Database schema created successfully"
     SUCCESS_DATA_INSERTED = "Data inserted successfully"
-    STATUS_LOADING_DATA = "Loading data from JSON files..."
-    STATUS_CREATING_SCHEMA = "Creating database schema..."
-    STATUS_INSERTING_DATA = "Inserting data into database..."
-    STATUS_RUNNING_ANALYSIS = "Running analysis queries..."
