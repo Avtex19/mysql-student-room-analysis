@@ -2,7 +2,7 @@
 
 A comprehensive Python application for analyzing student room data using MySQL, following SOLID principles and best practices.
 
-## 🎯 Project Overview
+## Project Overview
 
 This application demonstrates:
 - **SOLID Principles** implementation
@@ -11,13 +11,13 @@ This application demonstrates:
 - **Modular architecture** with clear separation of concerns
 - **Query optimization** with proper indexing strategies
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.11+
 - MySQL Server 8.0+
 - `uv` package manager
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Setup Environment
 
@@ -62,7 +62,7 @@ uv run python src/utils/preview_database.py
 uv run python tests/test_setup.py
 ```
 
-## 📊 Analysis Features
+## Analysis Features
 
 The application performs the following analyses:
 
@@ -81,7 +81,7 @@ The application performs the following analyses:
 - Gender distribution per room
 - Building-wise demographic breakdown
 
-## 🏗️ Architecture
+## Architecture
 
 The application follows SOLID principles with the following structure:
 
@@ -170,7 +170,7 @@ CREATE TABLE students (
 );
 ```
 
-## ⚡ Query Optimization
+## Query Optimization
 
 ### Existing Indexes
 - Primary keys on both tables
@@ -199,7 +199,7 @@ CREATE INDEX idx_students_covering ON students(room_id, id);
 - Optimized GROUP BY clauses
 - Proper use of HAVING clauses for post-aggregation filtering
 
-## 📈 Sample Output
+## Sample Output
 
 The application generates formatted reports like:
 
@@ -222,7 +222,7 @@ Room ID    Number     Building   Students   Avg Age
 ...
 ```
 
-## 🔧 Customization
+## Customization
 
 ### Adding New Data Sources
 Implement the `DataLoader` interface:
@@ -255,7 +255,7 @@ def get_custom_analysis(self) -> List[Tuple]:
 
 
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -271,13 +271,3 @@ def get_custom_analysis(self) -> List[Tuple]:
 3. **Import Errors**
    - Run `uv sync` to install dependencies
    - Ensure you're using the virtual environment
-
-
-
-## 📝 License
-
-This project is for educational purposes and demonstrates best practices in Python and MySQL development.
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
